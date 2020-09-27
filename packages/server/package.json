@@ -1,0 +1,44 @@
+{
+  "name": "user-management-api",
+  "version": "1.0.0",
+  "description": "User management API with roles",
+  "main": "index.js",
+  "scripts": {
+    "copy:dev": "copyfiles --flat node_modules/user-management-client/dist/**/* src/public/static",
+    "copy:prod": "copyfiles --flat node_modules/user-management-client/dist/**/* build/public/static",
+    "copy:views": "copyfiles --flat views/**/* build/views",
+    "build": "babel src --out-dir build",
+    "postinstall": "npm run build && npm run copy:dev && npm run copy:prod && npm run copy:views",
+    "start": "node build/index.js",
+    "start:local": "nodemon src/index.js --exec babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Eric Maya",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.5",
+    "copyfiles": "2.3.0",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "helmet": "^4.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.5",
+    "morgan": "^1.10.0",
+    "user-management-client": "1.0.0"
+  },
+  "engines": {
+    "node": ">=12.16.0"
+  }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <% if (useLiveReload == 'true') { %>
+    <link
+      rel="shortcut icon"
+      href="http://localhost:3001/favicon.ico"
+      type="image/x-icon"
+    />
+    <% } else { %>
+    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon" />
+    <% } %>
+    <title>User Management</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <% if (useLiveReload == 'true') { %>
+    <script src="http://localhost:3001/main.js"></script>
+    <% } else { %>
+    <script src="static/vendor.js"></script>
+    <script src="static/main.js"></script>
+    <% } %>
+  </body>
+</html>

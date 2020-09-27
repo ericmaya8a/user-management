@@ -1,0 +1,7 @@
+*.log
+.DS-Store
+.env
+build
+dist
+node_modules
+packages/server/src/public/static
