@@ -2,12 +2,17 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User';
 import { ErrorResponse } from '../utils';
 
-export const protect = async (req, res, next) => {
+const getToken = (req) => {
   let token = null;
   const { cookies } = req;
   if (cookies.token && cookies.token.length) {
     token = cookies.token;
   }
+  return token;
+};
+
+export const protect = async (req, res, next) => {
+  const token = getToken(req);
 
   // Validate token exists
   if (!token) {
@@ -32,6 +37,16 @@ export const authorize = (roles) => (req, res, next) => {
       `User with the role: "${role}" is not authorized to access this route`,
       res
     );
+  }
+  next();
+};
+
+export const isAuthenticated = async (req, res, next) => {
+  const token = getToken(req);
+
+  // Validate token exists
+  if (!token) {
+    return res.redirect('/login');
   }
   next();
 };

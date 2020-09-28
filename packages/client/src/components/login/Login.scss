@@ -1,0 +1,10 @@
+.Login {
+  align-items: center;
+  display: flex;
+  min-height: 100vh;
+
+  &__actions {
+    flex-direction: row-reverse;
+    padding: 8px 16px !important;
+  }
+}

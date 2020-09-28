@@ -8,6 +8,7 @@ import { config } from 'dotenv';
 import { connectDB } from './config/database';
 import pkg from '../package.json';
 import auth from './routes/auth.routes';
+import loginRender from './routes/login.routes';
 import users from './routes/users.routes';
 import render from './routes/render.routes';
 
@@ -54,6 +55,7 @@ app.get('/about', (req, res) =>
     author
   })
 );
+app.use('/login', loginRender);
 app.use('*', render);
 
 export default app;
